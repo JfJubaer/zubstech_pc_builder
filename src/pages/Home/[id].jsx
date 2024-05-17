@@ -34,6 +34,8 @@ const details = () => {
 
 export default details;
 
+//new doc added on serverside
+
 details.getLayout = function getLayout(page) {
   return <Mainlayout>{page}</Mainlayout>;
 };
