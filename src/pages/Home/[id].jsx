@@ -1,31 +1,42 @@
 import Mainlayout from "@/components/layout/mainlayout";
+import Link from "next/link";
 import React from "react";
 
-const details = () => {
+const details = ({ product }) => {
+  // console.log(product);
   return (
-    <div className="flex w-full items-center m-10">
-      <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-        <div className="px-4 py-2">
-          <h1 className="text-xl font-bold text-gray-800 uppercase dark:text-white">
-            NIKE AIR
-          </h1>
-          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quos
-            quidem sequi illum facere recusandae voluptatibus
-          </p>
-        </div>
-
-        <img
-          className="object-cover w-full h-48 mt-2"
-          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80"
-          alt="NIKE AIR"
-        />
-
-        <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
-          <h1 className="text-lg font-bold text-white">$129</h1>
-          <button className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
-            Add to cart
-          </button>
+    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+      {/* <Image
+        width={100}
+        height={100}
+        src={product?.image}
+        alt={product?.productName}
+        className="w-full h-48 object-cover"
+      /> */}
+      <div className="p-4">
+        <h3 className="text-xl font-semibold mb-2">{product?.productName}</h3>
+        <p className="text-gray-600 mb-2">{product?.category}</p>
+        <p className="text-gray-800 font-semibold mb-2">${product?.price}</p>
+        <p
+          className={`text-sm ${
+            product?.status === "In Stock" ? "text-green-600" : "text-red-600"
+          } font-semibold mb-2`}
+        >
+          {product?.status}
+        </p>
+        <div className="flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-yellow-500 mr-1"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 0a1 1 0 0 1 .785.385l3.55 4.537 5.438.794a1 1 0 0 1 .554 1.705l-4.09 3.993.968 5.422a1 1 0 0 1-1.451 1.055L10 15.937l-5.115 2.683a1 1 0 0 1-1.451-1.055l.968-5.422-4.09-3.993a1 1 0 0 1 .554-1.705l5.438-.794L9.215.385A1 1 0 0 1 10 0z"
+            />
+          </svg>
+          <p className="text-yellow-500">{product?.rating}</p>
         </div>
       </div>
     </div>
@@ -38,4 +49,19 @@ export default details;
 
 details.getLayout = function getLayout(page) {
   return <Mainlayout>{page}</Mainlayout>;
+};
+
+export const getServerSideProps = async (context) => {
+  const { params } = context;
+  const res = await fetch(
+    `http://localhost:5000/api/v1/books/get-components/${params.id}`
+  );
+  const data = await res.json();
+  // console.log(data);
+
+  return {
+    props: {
+      product: data.data,
+    },
+  };
 };
