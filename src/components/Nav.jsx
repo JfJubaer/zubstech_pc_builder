@@ -47,48 +47,48 @@ const Nav = () => {
                     </button>
                     {isOpen && (
                       <div className="absolute top-full left-0 bg-gray-800 text-white rounded-md py-2 mt-1">
-                        <a
-                          href="#"
+                        <Link
+                          href="/Home/Cat/Processor"
                           className="block px-4 py-2 hover:bg-gray-700"
                         >
-                          CPU / Processor
-                        </a>
-                        <a
-                          href="#"
+                          Processor
+                        </Link>
+                        <Link
+                          href="/Home/Cat/Motherboard"
                           className="block px-4 py-2 hover:bg-gray-700"
                         >
                           Motherboard
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="/Home/Cat/RAM"
                           className="block px-4 py-2 hover:bg-gray-700"
                         >
                           RAM
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="/Home/Cat/Power Supply Unit"
                           className="block px-4 py-2 hover:bg-gray-700"
                         >
                           Power Supply Unit
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="/Home/Cat/Storage Device"
                           className="block px-4 py-2 hover:bg-gray-700"
                         >
                           Storage Device
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="/Home/Cat/Monitor"
                           className="block px-4 py-2 hover:bg-gray-700"
                         >
                           Monitor
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          href="/Home/Cat/Others"
                           className="block px-4 py-2 hover:bg-gray-700"
                         >
                           Others
-                        </a>
+                        </Link>
                       </div>
                     )}
                   </div>
@@ -98,20 +98,20 @@ const Nav = () => {
 
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <a
+                <Link
                   className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
                   href="#"
                 >
                   Login
-                </a>
+                </Link>
 
                 <div className="hidden sm:flex">
-                  <a
+                  <Link
                     className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"
                     href="#"
                   >
                     Register
-                  </a>
+                  </Link>
                 </div>
               </div>
 
