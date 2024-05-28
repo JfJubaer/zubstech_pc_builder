@@ -4,6 +4,6 @@ import builderSlice from './feautures/components';
 
 export default configureStore({
   reducer: {
-    builder: builderSlice.reducer,
+    builder: builderSlice,
   },
 });

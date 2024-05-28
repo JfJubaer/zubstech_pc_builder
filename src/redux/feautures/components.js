@@ -14,9 +14,12 @@ const builderSlice = createSlice({
   initialState,
   reducers: {
     setComponent: (state, action) => {
-      state[action.payload.category] = action.payload.component;
+      state[action.payload.cat] = action.payload.component;
+      console.log(action.payload.cat)
     },
   },
 });
+
+export const { setComponent } = builderSlice.actions;
 
 export default builderSlice.reducer;

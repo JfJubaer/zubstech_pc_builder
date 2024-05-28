@@ -5,16 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 const BuilderPage = () => {
   const dispatch = useDispatch();
-  const selectedComponents = useSelector(
-    (state) => state.components.selectedComponents
-  );
+  const selectedComponents = useSelector((state) => state.builder);
 
-  useEffect(() => {
-    dispatch(fetchComponents());
-  }, [dispatch]);
+  console.log(selectedComponents);
 
   const categories = [
-    "CPU",
+    "Processor",
     "Motherboard",
     "RAM",
     "Power Supply Unit",
@@ -23,28 +19,29 @@ const BuilderPage = () => {
   ];
 
   const isBuildComplete = Object.keys(selectedComponents).length >= 5;
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">PC Builder</h1>
-      {categories.map((category) => (
+      {categories?.map((category) => (
         <div
           key={category}
           className="mb-4"
         >
           <div className="flex justify-between items-center">
             <h2 className="text-xl">{category}</h2>
-            <Link
-              href={`/components/${category.toLowerCase().replace(" ", "-")}`}
-            >
-              <a className="bg-blue-500 text-white px-4 py-2 rounded">
+            <Link href={`/Home/Builder/${category}`}>
+              <div className="bg-blue-500 text-white px-4 py-2 rounded">
                 Choose/Select
-              </a>
+              </div>
             </Link>
           </div>
           {selectedComponents[category] && (
             <div className="mt-2 p-4 border rounded">
-              <h3 className="text-lg">{selectedComponents[category].name}</h3>
-              <p>Price: ${selectedComponents[category].price}</p>
+              <h3 className="text-lg">
+                {selectedComponents[category]?.productName}
+              </h3>
+              <p>Price: ${selectedComponents[category]?.price}</p>
             </div>
           )}
         </div>
@@ -54,6 +51,7 @@ const BuilderPage = () => {
           !isBuildComplete && "opacity-50 cursor-not-allowed"
         }`}
         disabled={!isBuildComplete}
+        onClick={() => console.log("Build done")}
       >
         Complete Build
       </button>

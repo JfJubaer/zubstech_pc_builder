@@ -39,6 +39,12 @@ const Nav = () => {
               <ul className="flex items-center gap-6 text-sm">
                 <li>
                   <div className="relative">
+                    <Link
+                      href={"/Home/Builder"}
+                      className="hover:text-gray-400 focus:outline-none mr-10"
+                    >
+                      PC Builder
+                    </Link>
                     <button
                       onClick={toggleDropdown}
                       className="hover:text-gray-400 focus:outline-none"
